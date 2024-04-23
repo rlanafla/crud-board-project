@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif
+}
+
+body {
+    background-color: #a4c68a;
+}
+
+.categoryname {
+    padding-bottom: 20px;
+}
+
+.category {
+    display : flex;
+}
+
+
+.title {
+    text-align: center;
+    font-size : 100px;
+    font-family: "Dongle", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.sub-title {
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+.btn {
+    flex : 1;
+    margin-right : 10px;
+    background-color :#a4c68a;
+    border : none;
+}
+
+
+
+.contain {
+    display : flex;
+    align-items: center;
+    justify-content : center
+}
+
+.container {
+    background-color: white;
+    padding: 0 35px 50px 35px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.card {
+   position: relative;
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+   -webkit-box-orient: vertical;
+   -webkit-box-direction: normal;
+   -ms-flex-direction: column;
+   flex-direction: column;
+   min-width: 0;
+   word-wrap: break-word;
+   background-color: #fff;
+   background-clip: border-box;
+   border: 0px solid transparent;
+   border-radius: 0px;
+}
+
+.card-body {
+   -webkit-box-flex: 1;
+   -ms-flex: 1 1 auto;
+   flex: 1 1 auto;
+   padding: 1.25rem;
+}
+
+.card .card-title {
+   position: relative;
+   font-weight: 600;
+   margin-bottom: 10px;
+}
+
+ul.list-style-none li {
+   list-style: none;
+}
+
+ul.list-style-none li a {
+   color: black;
+   padding: 8px 0px;
+   display: block;
+   text-decoration: none;
+}
+
+.m-t-5 {
+   margin-top: 5px;
+}
+
+.w-30px {
+   width: 30px;
+}
+
+.page-item .page-link {
+    color : black;
+}
+
+.page-item.active .page-link {
+    background-color:#a4c68a;
+    border : gray
+}

@@ -1,8 +1,10 @@
 package com.example.spring_project1.community.repository;
 
 
+import com.example.spring_project1.community.domain.Board.Dto.BoardResponseDto;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.*;
 import com.example.spring_project1.community.domain.Board.Entity.Board;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +24,9 @@ public class JdbcTemplateBoardRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
     //게시판 생성
-    public Board save(Board board) {
+    public BoardResponseDto save(Board board) {
         //새로운 board를 저장하는 경우 새 id 생성
         String sql = "insert into board(pw, title, sub_title, createdAt, modifiedAt) values(?, ?, ?, ?, ?)";
-        String sql2 = "update board set pw = ?, title = ?, sub_title = ?, modifiedAt = ? where id = ?";
         if (board.getId() == null) {
             KeyHolder keyHolder = new GeneratedKeyHolder();
             jdbcTemplate.update(
@@ -52,43 +53,43 @@ public class JdbcTemplateBoardRepository {
                 throw new RuntimeException("key generate failed");
             }
         }
-        //board가 이미 존재하는 경우 (createtime은 수정 안함)
-        else {
-            jdbcTemplate.update(sql2, board.getPw(), board.getTitle(), board.getSub_title(), board.getModifiedAt(), board.getId());
-        }
-        return board;
+        return board.toBoardResponseDto();
     }
 
-    //게시판 수정
-//    public int update(Board board){
-//        String sql = "update board set pw = ?, title = ?, sub_title = ?, modifiedAt = ? where id = ?";
-//        int result = jdbcTemplate.update(sql, board.getPw(), board.getTitle(), board.getSub_title(), board.getModifiedAt(), board.getId());
-//        return result;
-//    }
-    //업데이트 된 행의 수 반환
-
+    public BoardResponseDto update(Board board){
+        String sql = "update board set pw = ?, title = ?, sub_title = ?, createdAt = ?, modifiedAt = ? where id = ?";
+        jdbcTemplate.update(sql, board.getPw(), board.getTitle(), board.getSub_title(), board.getCreatedAt(), board.getModifiedAt(), board.getId());
+        return board.toBoardResponseDto();
+    }
     //게시판 조회
-    private RowMapper<Board> boardRowMapper() {
+    private RowMapper<BoardResponseDto> boardRowMapper() {
         return (rs, rowNum) -> {
-            //db에서 값 불러옴
             Board board = new Board();
             board.setId(rs.getLong("id"));
             board.setPw(rs.getString("pw"));
             board.setTitle(rs.getString("title"));
             board.setSub_title(rs.getString("sub_title"));
-            board.setCreatedAt(rs.getTimestamp("createdAt").toLocalDateTime());
-            board.setModifiedAt(rs.getTimestamp("modifiedAt").toLocalDateTime());
 
-            return board;
+            Timestamp createdAtTimestamp = rs.getTimestamp("createdAt");
+            if (createdAtTimestamp != null) {
+                board.setCreatedAt(createdAtTimestamp.toLocalDateTime());
+            }
+
+            Timestamp modifiedAtTimestamp = rs.getTimestamp("modifiedAt");
+            if (modifiedAtTimestamp != null) {
+                board.setModifiedAt(modifiedAtTimestamp.toLocalDateTime());
+            }
+
+            return board.toBoardResponseDto();
         };
     }
-    public List<Board> findAll() {
+    public List<BoardResponseDto> findAll() {
         return jdbcTemplate.query("select  * from board", boardRowMapper());
     }
 
-    public Optional<Board> findById(long id) {
+    public Optional<BoardResponseDto> findById(long id) {
         try {
-            Board board = jdbcTemplate.queryForObject(
+            BoardResponseDto board = jdbcTemplate.queryForObject(
                 "select * from board where id = ?", boardRowMapper(), id
             );
             return Optional.ofNullable(board);
@@ -98,7 +99,7 @@ public class JdbcTemplateBoardRepository {
     }
 
     //게시판 삭제
-    public void delete(Board board) {
+    public void delete(BoardResponseDto board) {
         String sql = "delete from board where id = ?";
         jdbcTemplate.update(sql, board.getId());
     }

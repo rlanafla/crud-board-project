@@ -21,7 +21,7 @@
 //@RestController
 //@Controller
 ////API만 구현
-//@RequestMapping("")
+//@RequestMapping("/boards")
 //public class BoardController {
 //    private final BoardService boardService;
 //    //객체 생성

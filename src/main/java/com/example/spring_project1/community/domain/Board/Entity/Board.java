@@ -30,6 +30,15 @@ public class Board {
     private LocalDateTime modifiedAt;
 
     public Board() {}
+
+    public Board(Long id, String pw, String title, String sub_title, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+        this.id = id;
+        this.pw = pw;
+        this.title = title;
+        this.sub_title = sub_title;
+        this.createdAt = createdAt;
+        this.modifiedAt = modifiedAt;
+    }
     public Board(String pw, String title, String sub_title, LocalDateTime createdAt, LocalDateTime modifiedAt) {
         this.pw = pw;
         this.title = title;

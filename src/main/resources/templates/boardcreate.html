@@ -6,7 +6,7 @@
         <title>게시글 작성</title>
         <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
         <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' rel='stylesheet'>
-        <link rel="stylesheet" href="boardcreatestyle.css">
+        <link rel="stylesheet" href="css/boardcreatestyle.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@400;700&display=swap" rel="stylesheet">
@@ -16,7 +16,61 @@
         <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
         <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
         <script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js'></script>
-        
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                font-family: 'Poppins', sans-serif
+            }
+
+            body {
+                background-color: #a4c68a;
+            }
+
+            .title {
+                text-align: center;
+                font-size : 100px;
+                font-family: "Dongle", sans-serif;
+                font-weight: 700;
+                font-style: normal;
+            }
+
+            .sub-title {
+                padding-bottom: 30px;
+                text-align: center;
+            }
+
+            .contain {
+                display : flex;
+                align-items: center;
+                justify-content : center
+            }
+
+            .container {
+                background-color: white;
+                padding: 0 35px 50px 35px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            input::placeholder {
+                text-align: center;
+            }
+
+            .btn {
+                background-color: #a4c68a;
+                margin-top: 30px;
+                padding: 10px 0;
+                color : white;
+                border-radius: 8px;
+            }
+
+        </style>
     </head>
     <body oncontextmenu='return false' class='snippet-body'>
     <div class = "contain">

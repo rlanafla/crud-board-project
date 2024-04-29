@@ -1,5 +1,6 @@
-package com.example.spring_project1.community.domain;
+package com.example.spring_project1.community.domain.Post;
 
+import com.example.spring_project1.community.domain.BaseEntity;
 import com.example.spring_project1.community.domain.Board.Entity.Board;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
@@ -47,4 +48,11 @@ public class Post extends BaseEntity {
     private String location;
 
     private int like_count;
+
+    public void edit(String pw, String title, String content, String location) {
+        this.pw = pw;
+        this.title = title;
+        this.content = content;
+        this.location = location;
+    }
 }

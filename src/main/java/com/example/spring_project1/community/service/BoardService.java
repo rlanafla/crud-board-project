@@ -1,5 +1,6 @@
 package com.example.spring_project1.community.service;
 
+import com.example.spring_project1.community.domain.Board.Dto.BoardResponseDto;
 import com.example.spring_project1.community.domain.Board.Entity.Board;
 import com.example.spring_project1.community.repository.JdbcTemplateBoardRepository;
 import java.util.List;
@@ -13,23 +14,23 @@ public class BoardService {
         this.boardRepository = boardRepository;
     }
     //게시판 조회
-    public List<Board> findBoards() {
+    public List<BoardResponseDto> findBoards() {
         return boardRepository.findAll();
     }
 
-    public Board findBoard(long id) {
+    public BoardResponseDto findBoard(long id) {
         return boardRepository.findById(id).orElseThrow(() -> new RuntimeException());
     }
 
     //게시판 생성
-    public Board createBoard(Board board) {
+    public BoardResponseDto createBoard(Board board) {
         return boardRepository.save(board);
     }
 
     //게시판 수정
-    public Board updateBoard(Board board) { return boardRepository.save(board);}
+    public BoardResponseDto updateBoard(Board board) { return boardRepository.update(board);}
     public void deleteBoard(long id) {
-        Board board = boardRepository.findById(id).orElseThrow(() -> new RuntimeException());
+        BoardResponseDto board = boardRepository.findById(id).orElseThrow(() -> new RuntimeException());
         boardRepository.delete(board);
     }
 

@@ -6,13 +6,10 @@ import java.time.LocalDateTime;
 public class BoardResponseDto {
     private Long id;
 
-    @Column(length = 10, nullable = false)
     private String pw;
 
-    @Column(length = 20, nullable = false)
     private String title;
 
-    @Column(length = 17, nullable = false)
     private String sub_title;
 
     private LocalDateTime createdAt;
@@ -32,9 +29,7 @@ public class BoardResponseDto {
         return id;
     }
 
-    public void setId(Long id){
-        this.id = id;
-    }
+    public String getPw() { return pw; }
 
     public String getTitle() {
         return title;
@@ -44,9 +39,7 @@ public class BoardResponseDto {
         return sub_title;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
+    public LocalDateTime getCreatedAt() { return createdAt; }
 
     public LocalDateTime getModifiedAt() {
         return modifiedAt;

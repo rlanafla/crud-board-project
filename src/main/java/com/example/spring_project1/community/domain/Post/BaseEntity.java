@@ -1,4 +1,4 @@
-package com.example.spring_project1.community.domain;
+package com.example.spring_project1.community.domain.Post;
 //모든 table에 "공통으로" 사용되는 데이터 추가 시간, 수정 시간을 "자동으로" 관리하기 위한 class -> @MappedSuperClass로 처리
 
 import com.fasterxml.jackson.databind.ser.Serializers.Base;

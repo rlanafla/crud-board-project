@@ -6,7 +6,7 @@ import org.springframework.context.annotation.EnableLoadTimeWeaving;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
-//@EnableJpaAuditing
+@EnableJpaAuditing
 //listener 활성화 위함
 public class SpringProject1Application {
 	public static void main(String[] args) {

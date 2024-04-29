@@ -1,8 +1,11 @@
-package com.example.spring_project1.community.domain.Post;
+package com.example.spring_project1.community.domain.Post.Entity;
 
-import com.example.spring_project1.community.domain.BaseEntity;
+import com.example.spring_project1.community.domain.Board.Dto.BoardResponseDto;
+import com.example.spring_project1.community.domain.Post.Dto.PostResponseDto;
+import com.example.spring_project1.community.domain.Post.Entity.BaseEntity;
 import com.example.spring_project1.community.domain.Board.Entity.Board;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,6 +19,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+@Entity
 @Builder
 @Getter
 @Setter
@@ -49,10 +53,9 @@ public class Post extends BaseEntity {
 
     private int like_count;
 
-    public void edit(String pw, String title, String content, String location) {
-        this.pw = pw;
-        this.title = title;
-        this.content = content;
-        this.location = location;
+    public PostResponseDto toPostResponseDto() {
+        Post post = new Post();
+        return new PostResponseDto(id, pw, title, content, location, like_count, post.getCreatedAt(), post.getModifiedAt());
     }
+
 }

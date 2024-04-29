@@ -82,7 +82,7 @@ public class ViewController {
         return "redirect:/boards";
     }
 
-    @DeleteMapping("/delete/{boardid}")
+    @GetMapping("/delete/{boardid}")
     public String deleteBoard(@PathVariable long boardid) {
         boardService.deleteBoard(boardid);
         return "redirect:/boards";

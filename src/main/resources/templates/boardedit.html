@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>게시글 수정</title>
+  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
+  <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' rel='stylesheet'>
+  <link rel="stylesheet" href="css/boardcreatestyle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+  <script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js'></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif
+    }
+
+    body {
+      background-color: #a4c68a;
+    }
+
+    .title {
+      text-align: center;
+      font-size : 100px;
+      font-family: "Dongle", sans-serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .sub-title {
+      padding-bottom: 30px;
+      text-align: center;
+    }
+
+    .contain {
+      display : flex;
+      align-items: center;
+      justify-content : center
+    }
+
+    .container {
+      background-color: white;
+      padding: 0 35px 50px 35px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    input::placeholder {
+      text-align: center;
+    }
+
+    .btn {
+      background-color: #a4c68a;
+      margin-top: 30px;
+      padding: 10px 0;
+      color : white;
+      border-radius: 8px;
+    }
+
+  </style>
+</head>
+<body oncontextmenu='return false' class='snippet-body'>
+<div class = "contain">
+  <div class="container">
+    <div class="title">울동대</div>
+    <div class="sub-title">우리 동네 대학생들을 위한 커뮤니티</div>
+    <div class="createform">
+      <div class="mb-3">
+        <input type="text" class="form-control" id="inputtitle" rows="2" placeholder="제목">
+      </div>
+      <div class="mb-3">
+        <textarea class="form-control" id="inputtext" rows="30"></textarea>
+      </div>
+      <div class="mb-3">
+        <input class="form-control" type="file" id="inputfile">
+      </div>
+    </div>
+    <div class="text-center">
+      <button type="button" class="btn btn-sm col-12 mx-auto">발행</button>
+    </div>
+  </div>
+</div>
+<script type='text/javascript'></script>
+</body>
+</html>

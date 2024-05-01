@@ -1,8 +1,13 @@
 package com.example.spring_project1.community.domain.Board.Dto;
 
+import com.example.spring_project1.community.domain.Board.Entity.Board;
 import jakarta.persistence.Column;
 import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class BoardResponseDto {
     private Long id;
 
@@ -25,25 +30,8 @@ public class BoardResponseDto {
         this.modifiedAt = modifiedAt;
     }
 
-    public Long getId() {
-        return id;
+    public Board toEntity() {
+        return new Board(id, pw, title, sub_title, createdAt, modifiedAt);
     }
-
-    public String getPw() { return pw; }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getSub_title() {
-        return sub_title;
-    }
-
-    public LocalDateTime getCreatedAt() { return createdAt; }
-
-    public LocalDateTime getModifiedAt() {
-        return modifiedAt;
-    }
-
 
 }

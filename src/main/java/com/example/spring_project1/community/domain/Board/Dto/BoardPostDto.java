@@ -3,7 +3,11 @@ package com.example.spring_project1.community.domain.Board.Dto;
 import com.example.spring_project1.community.domain.Board.Entity.Board;
 import jakarta.persistence.Column;
 import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class BoardPostDto {
     private String pw;
 
@@ -26,27 +30,6 @@ public class BoardPostDto {
         this.modifiedAt = modifiedAt;
     }
 
-
-    public void setPw(String pw) {
-        this.pw = pw;
-    }
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setSub_title(String sub_title) {
-        this.sub_title = sub_title;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public void setModifiedAt(LocalDateTime modifiedAt) {
-        this.modifiedAt = modifiedAt;
-    }
-
-    //받은 값을 entity로 생성
 
     public Board toEntity() {
         Board board = new Board(pw, title, sub_title, createdAt, modifiedAt);

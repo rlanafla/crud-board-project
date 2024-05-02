@@ -188,7 +188,7 @@
                             <i class="fa fa-check-circle w-30px m-t-5"></i>
                             <div>
                               <a class="m-b-0 font-medium p-0" data-abc="true" th:text="${post.getTitle()}" th:href="@{/boards/{boardid}/posts/{postid}(boardid=${boardid}, postid=${post.getId()})}" >제목</a>
-                              <span class="text-muted" th:text="${#strings.substring(post.getContent(), 0, 55)}">내용 일부 </span>
+                              <span class="text-muted" th:text="${post.getContent()}">내용 일부 </span>
 
                             </div>
                             <div class="ml-auto">

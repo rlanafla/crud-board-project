@@ -13,7 +13,7 @@ public class CommentResponseDto {
 
     private String content;
 
-    private LocalDateTime createdAt;
+    private LocalDateTime created_at;
 
-    private LocalDateTime modifiedAt;
+    private LocalDateTime modified_at;
 }

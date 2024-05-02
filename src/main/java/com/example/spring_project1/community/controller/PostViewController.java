@@ -1,10 +1,13 @@
 package com.example.spring_project1.community.controller;
 import com.example.spring_project1.community.domain.Board.Dto.BoardResponseDto;
 import com.example.spring_project1.community.domain.Board.Entity.Board;
+import com.example.spring_project1.community.domain.Comment.Dto.CommentResponseDto;
+import com.example.spring_project1.community.domain.Comment.Entity.Comment;
 import com.example.spring_project1.community.domain.Post.Dto.PostRequestDto;
 import com.example.spring_project1.community.domain.Post.Dto.PostResponseDto;
 import com.example.spring_project1.community.domain.Post.Dto.PostUpdateDto;
 import com.example.spring_project1.community.domain.Post.Entity.Post;
+import com.example.spring_project1.community.service.CommentService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.http.HttpStatus;
@@ -25,10 +28,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("boards/{boardid}/posts")
 public class PostViewController {
     private final PostService postService;
+    private final CommentService commentService;
 
     @Autowired
-    public PostViewController(PostService postService) {
+    public PostViewController(PostService postService, CommentService commentService) {
         this.postService = postService;
+        this.commentService = commentService;
     }
 
     //게시글 목록
@@ -49,8 +54,10 @@ public class PostViewController {
     //특정 게시글 조회
     @GetMapping("/{postid}")
     public String getPostView(@PathVariable("postid") long postid, @PathVariable("boardid") long boardid, Model model) {
-        model.addAttribute("boardid", boardid);
         PostResponseDto post = postService.findPost(postid);
+        List<CommentResponseDto> commentList = commentService.findComments(postid);
+        model.addAttribute("commentlist", commentList);
+        model.addAttribute("boardid", boardid);
         model.addAttribute("post2", post);
         return "post"; }
 

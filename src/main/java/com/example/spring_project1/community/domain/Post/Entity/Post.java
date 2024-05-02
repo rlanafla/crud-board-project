@@ -59,7 +59,7 @@ public class Post extends BaseEntity {
 
     private int like_count;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "post_id", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> commentList = new ArrayList<>();
 
     public PostResponseDto toPostResponseDto() {

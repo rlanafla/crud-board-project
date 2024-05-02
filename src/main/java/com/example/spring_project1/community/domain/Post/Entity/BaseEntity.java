@@ -22,10 +22,10 @@ public class BaseEntity {
     //entity 생성 시 자동으로 생성 시간을 저장한다. 한 번 저장된 생성 시간은 수정되지 않는다.
     @CreatedDate
     @Column(name = "created_at", updatable = false)
-    private LocalDateTime createdAt;
+    private LocalDateTime created_at;
     //entity 수정 시간. 수정 시간은 update가 가능
     @LastModifiedDate
     @Column(name = "modified_at")
-    private LocalDateTime modifiedAt;
+    private LocalDateTime modified_at;
 
 }

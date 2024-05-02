@@ -8,8 +8,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "board")
 public class Board {
     @Id
@@ -25,9 +29,11 @@ public class Board {
     @Column(length = 17, nullable = false)
     private String sub_title;
 
-    private LocalDateTime createdAt;
+    @Column(name = "created_at")
+    private LocalDateTime created_at;
 
-    private LocalDateTime modifiedAt;
+    @Column(name = "modified_at")
+    private LocalDateTime modified_at;
 
     public Board() {}
 
@@ -36,65 +42,18 @@ public class Board {
         this.pw = pw;
         this.title = title;
         this.sub_title = sub_title;
-        this.createdAt = createdAt;
-        this.modifiedAt = modifiedAt;
+        this.created_at = createdAt;
+        this.modified_at = modifiedAt;
     }
     public Board(String pw, String title, String sub_title, LocalDateTime createdAt, LocalDateTime modifiedAt) {
         this.pw = pw;
         this.title = title;
         this.sub_title = sub_title;
-        this.createdAt = createdAt;
-        this.modifiedAt = modifiedAt;
-    }
-    public Long getId() {
-        return id;
-    }
-
-    public String getPw() {
-        return pw;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getSub_title() {
-        return sub_title;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getModifiedAt() {
-        return modifiedAt;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setPw(String pw) {
-        this.pw = pw;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setSub_title(String sub_title) {
-        this.sub_title = sub_title;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public void setModifiedAt(LocalDateTime modifiedAt) {
-        this.modifiedAt = modifiedAt;
+        this.created_at = createdAt;
+        this.modified_at = modifiedAt;
     }
 
     public BoardResponseDto toBoardResponseDto() {
-        return new BoardResponseDto(id, pw, title, sub_title, createdAt, modifiedAt);
+        return new BoardResponseDto(id, pw, title, sub_title, created_at, modified_at);
     }
 }

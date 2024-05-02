@@ -26,7 +26,7 @@ public class JdbcTemplateBoardRepository {
     //게시판 생성
     public BoardResponseDto save(Board board) {
         //새로운 board를 저장하는 경우 새 id 생성
-        String sql = "insert into board(pw, title, sub_title, createdAt, modifiedAt) values(?, ?, ?, ?, ?)";
+        String sql = "insert into board(pw, title, sub_title, created_at, modified_at) values(?, ?, ?, ?, ?)";
         if (board.getId() == null) {
             KeyHolder keyHolder = new GeneratedKeyHolder();
             jdbcTemplate.update(
@@ -38,8 +38,8 @@ public class JdbcTemplateBoardRepository {
                     ps.setObject(1, board.getPw());
                     ps.setObject(2, board.getTitle());
                     ps.setObject(3, board.getSub_title());
-                    ps.setObject(4, board.getCreatedAt());
-                    ps.setObject(5, board.getModifiedAt());
+                    ps.setObject(4, board.getCreated_at());
+                    ps.setObject(5, board.getModified_at());
                     return ps;
                 }, keyHolder
             );
@@ -57,8 +57,8 @@ public class JdbcTemplateBoardRepository {
     }
 
     public BoardResponseDto update(Board board){
-        String sql = "update board set pw = ?, title = ?, sub_title = ?, createdAt = ?, modifiedAt = ? where id = ?";
-        jdbcTemplate.update(sql, board.getPw(), board.getTitle(), board.getSub_title(), board.getCreatedAt(), board.getModifiedAt(), board.getId());
+        String sql = "update board set pw = ?, title = ?, sub_title = ?, created_at = ?, modified_at = ? where id = ?";
+        jdbcTemplate.update(sql, board.getPw(), board.getTitle(), board.getSub_title(), board.getCreated_at(), board.getModified_at(), board.getId());
         return board.toBoardResponseDto();
     }
     //게시판 조회
@@ -70,14 +70,14 @@ public class JdbcTemplateBoardRepository {
             board.setTitle(rs.getString("title"));
             board.setSub_title(rs.getString("sub_title"));
 
-            Timestamp createdAtTimestamp = rs.getTimestamp("createdAt");
+            Timestamp createdAtTimestamp = rs.getTimestamp("created_at");
             if (createdAtTimestamp != null) {
-                board.setCreatedAt(createdAtTimestamp.toLocalDateTime());
+                board.setCreated_at(createdAtTimestamp.toLocalDateTime());
             }
 
-            Timestamp modifiedAtTimestamp = rs.getTimestamp("modifiedAt");
+            Timestamp modifiedAtTimestamp = rs.getTimestamp("modified_at");
             if (modifiedAtTimestamp != null) {
-                board.setModifiedAt(modifiedAtTimestamp.toLocalDateTime());
+                board.setModified_at(modifiedAtTimestamp.toLocalDateTime());
             }
 
             return board.toBoardResponseDto();

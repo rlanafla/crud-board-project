@@ -17,21 +17,21 @@ public class BoardResponseDto {
 
     private String sub_title;
 
-    private LocalDateTime createdAt;
+    private LocalDateTime created_at;
 
-    private LocalDateTime modifiedAt;
+    private LocalDateTime modified_at;
 
-    public BoardResponseDto(Long id, String pw, String title, String sub_title, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+    public BoardResponseDto(Long id, String pw, String title, String sub_title, LocalDateTime created_at, LocalDateTime modified_at) {
         this.id = id;
         this.pw = pw;
         this.title = title;
         this.sub_title = sub_title;
-        this.createdAt = createdAt;
-        this.modifiedAt = modifiedAt;
+        this.created_at = created_at;
+        this.modified_at = modified_at;
     }
 
     public Board toEntity() {
-        return new Board(id, pw, title, sub_title, createdAt, modifiedAt);
+        return new Board(id, pw, title, sub_title, created_at, modified_at);
     }
 
 }

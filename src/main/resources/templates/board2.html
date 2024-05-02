@@ -59,7 +59,9 @@
                 border : none;
             }
 
-
+            .a:visited {
+              color : red;
+            }
 
             .contain {
                 display : flex;
@@ -143,6 +145,7 @@
             <div class="sub-title">우리 동네 대학생들을 위한 커뮤니티</div>
             <div class="justify-content-center mt-100 mb-100">
                 <div class="categoryname">category</div>
+
                 <div class="category">
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -180,22 +183,25 @@
                       </button>
                     </div>
                 </div>
-                   <div class="card">
-                    <ul class="list-style-none" >
+
+                   <div class="card" th:each="post : ${postlist}">
+                    <ul class="list-style-none">
                         <li class="d-flex no-block card-body">
                             <i class="fa fa-check-circle w-30px m-t-5"></i>
                             <div>
-                                <a class="m-b-0 font-medium p-0" data-abc="true">Version 2.5 released</a>
-                                <span class="text-muted">A new version 2.5 has been released. </span>
+                              <a class="m-b-0 font-medium p-0" data-abc="true" th:text="${post.getTitle()}" th:href="@{/boards/{boardid}/posts/{postid}(boardid=${boardid}, postid=${post.getId()})}" >제목</a>
+                              <span class="text-muted" th:text="${#strings.substring(post.getContent(), 0, 3)}">내용 일부 </span>
+
                             </div>
                             <div class="ml-auto">
                                 <div class="tetx-right">
-                                    <h5 class="text-muted m-b-0">26</h5>
-                                    <span class="text-muted font-16">FEB</span>
+                                    <h5 class="text-muted m-b-0" th:text="${#temporals.format(post.getCreated_at(), 'dd')}"></h5>
+                                    <span class="text-muted font-16" th:text="${#temporals.format(post.getCreated_at(), 'MMM')}"></span>
                                 </div>
                             </div>
                         </li>
                     </ul>
+                   </div>
                     <!--페이지네이션-->
                     <nav aria-label="...">
                         <ul class="pagination justify-content-center">

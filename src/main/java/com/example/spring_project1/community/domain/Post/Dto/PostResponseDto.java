@@ -23,7 +23,7 @@ public class PostResponseDto {
 
     private int like_count;
 
-    private LocalDateTime createdAt;
+    private LocalDateTime created_at;
 
-    private LocalDateTime modifiedAt;
+    private LocalDateTime modified_at;
 }

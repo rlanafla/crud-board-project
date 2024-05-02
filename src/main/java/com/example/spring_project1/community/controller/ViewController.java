@@ -81,7 +81,7 @@ public class ViewController {
 
     @PostMapping("/edit/{boardid}")
     public String editBoard(@PathVariable("boardid") long boardid, @RequestParam String title, @RequestParam String pw, @RequestParam String sub_title) {
-        LocalDateTime createdAt = boardService.findBoard(boardid).getCreatedAt();
+        LocalDateTime createdAt = boardService.findBoard(boardid).getCreated_at();
         BoardUpdateDto boardUpdateDto = new BoardUpdateDto(boardid, pw, title, sub_title, createdAt, LocalDateTime.now());
         boardService.updateBoard(boardUpdateDto.toEntity());
 

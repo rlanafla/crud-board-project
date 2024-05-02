@@ -4,6 +4,7 @@ import com.example.spring_project1.community.domain.Board.Entity.Board;
 import com.example.spring_project1.community.domain.Post.Dto.PostRequestDto;
 import com.example.spring_project1.community.domain.Post.Dto.PostResponseDto;
 import com.example.spring_project1.community.domain.Post.Dto.PostUpdateDto;
+import com.example.spring_project1.community.domain.Post.Entity.Post;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.http.HttpStatus;
@@ -33,6 +34,8 @@ public class PostViewController {
     //게시글 목록
     @GetMapping
     public String getAllPostView(@PathVariable("boardid") long boardid, Model model) {
+        List<PostResponseDto> posts = postService.findPosts();
+        model.addAttribute("postlist", posts);
         model.addAttribute("boardid", boardid);
         return "board2"; }
 
@@ -45,8 +48,10 @@ public class PostViewController {
 
     //특정 게시글 조회
     @GetMapping("/{postid}")
-    public String getPostView(@PathVariable("boardid") long boardid, Model model) {
+    public String getPostView(@PathVariable("postid") long postid, @PathVariable("boardid") long boardid, Model model) {
         model.addAttribute("boardid", boardid);
+        PostResponseDto post = postService.findPost(postid);
+        model.addAttribute("post2", post);
         return "post"; }
 
     //특정 게시글 id 조회

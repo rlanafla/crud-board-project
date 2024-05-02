@@ -77,20 +77,26 @@
   <div class="container">
     <div class="title">울동대</div>
     <div class="sub-title">우리 동네 대학생들을 위한 커뮤니티</div>
-    <div class="createform">
+    <form class="createform" th:action="@{/boards/{boardid}/posts/edit/{postid}(boardid=${boardid}, postid=${post.getId()})}" method="post">
       <div class="mb-3">
-        <input type="text" class="form-control" id="inputtitle" rows="2" placeholder="제목">
+        <input type="text" class="form-control" id="inputtitle" th:value="${post.getTitle()}" name="title" rows="2" placeholder="제목">
       </div>
       <div class="mb-3">
-        <textarea class="form-control" id="inputtext" rows="30"></textarea>
+        <textarea class="form-control" id="inputtext" th:text="${post.getContent()}" name="content" rows="30"></textarea>
       </div>
       <div class="mb-3">
         <input class="form-control" type="file" id="inputfile">
       </div>
-    </div>
-    <div class="text-center">
-      <button type="button" class="btn btn-sm col-12 mx-auto">수정</button>
-    </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" id="inputpw" th:value="${post.getPw()}" name="pw" rows="1" placeholder="비밀번호">
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" id="inputlocation" th:value="${post.getLocation()}" name="location" rows="1" placeholder="동네 설정">
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-sm col-12 mx-auto">수정</button>
+      </div>
+    </form>
   </div>
 </div>
 <script type='text/javascript'></script>

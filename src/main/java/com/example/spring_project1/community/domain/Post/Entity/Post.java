@@ -56,7 +56,7 @@ public class Post extends BaseEntity {
     private int like_count;
 
     public PostResponseDto toPostResponseDto() {
-        return new PostResponseDto(id, pw, title, content, location, like_count, getCreatedAt(), getModifiedAt());
+        return new PostResponseDto(id, pw, title, content, location, like_count, getCreated_at(), getModified_at());
     }
 
 }

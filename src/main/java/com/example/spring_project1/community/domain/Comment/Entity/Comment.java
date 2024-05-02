@@ -44,6 +44,6 @@ public class Comment extends BaseEntity {
 
     public CommentResponseDto tocommentResponseDto() {
         Comment comment = new Comment();
-        return new CommentResponseDto(id, pw, content, comment.getCreatedAt(), comment.getModifiedAt());
+        return new CommentResponseDto(id, pw, content, comment.getCreated_at(), comment.getModified_at());
     }
 }

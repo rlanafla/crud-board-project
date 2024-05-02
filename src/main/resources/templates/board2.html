@@ -45,6 +45,7 @@
                 font-family: "Dongle", sans-serif;
                 font-weight: 700;
                 font-style: normal;
+                cursor: pointer;
             }
 
             .sub-title {
@@ -59,9 +60,6 @@
                 border : none;
             }
 
-            .a:visited {
-              color : red;
-            }
 
             .contain {
                 display : flex;
@@ -141,10 +139,10 @@
     <body oncontextmenu='return false' class='snippet-body'>
     <div class = "contain">
         <div class="container">
-            <div class = title>울동대</div>
+            <div class = "title" th:onclick="'window.location.href=\'' + @{/boards} + '\''">울동대</div>
             <div class="sub-title">우리 동네 대학생들을 위한 커뮤니티</div>
             <div class="justify-content-center mt-100 mb-100">
-                <div class="categoryname">category</div>
+                <div class="categoryname"></div>
 
                 <div class="category">
                     <div class="dropdown">
@@ -186,11 +184,11 @@
 
                    <div class="card" th:each="post : ${postlist}">
                     <ul class="list-style-none">
-                        <li class="d-flex no-block card-body">
+                        <li class="d-flex no-block card-body border-bottom">
                             <i class="fa fa-check-circle w-30px m-t-5"></i>
                             <div>
                               <a class="m-b-0 font-medium p-0" data-abc="true" th:text="${post.getTitle()}" th:href="@{/boards/{boardid}/posts/{postid}(boardid=${boardid}, postid=${post.getId()})}" >제목</a>
-                              <span class="text-muted" th:text="${#strings.substring(post.getContent(), 0, 3)}">내용 일부 </span>
+                              <span class="text-muted" th:text="${#strings.substring(post.getContent(), 0, 55)}">내용 일부 </span>
 
                             </div>
                             <div class="ml-auto">

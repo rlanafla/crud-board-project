@@ -60,6 +60,10 @@
             transform: translate(-50%, -50%);
         }
 
+        .title {
+            cursor: pointer;
+        }
+
         .box {
             padding: 30px 10px;
             transition: all .4s ease-in-out;
@@ -156,8 +160,8 @@
 <body oncontextmenu='return false' class='snippet-body'>
 <div class = "contain">
     <div class="container">
-        <div class = title>울동대</div>
-        <div class="sub-title">우리 동네 대학생들을 위한 커뮤니티</div>
+        <div class = "title" th:onclick="'window.location.href=\'' + @{/boards} + '\''">울동대</div>
+        <div class="sub-title" >우리 동네 대학생들을 위한 커뮤니티</div>
         <div class="row">
             <div class="col-lg-4 col-md-6 my-lg-3 my-3 clickable-div" th:each="board : ${boardlist}">
                 <div class="box">

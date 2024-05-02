@@ -3,14 +3,15 @@
     <head>
         <meta charset='utf-8' xmlns:th="http://www.thymeleaf.org">
         <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <title>카테고리 이름-게시글이름</title>
+        <title>울동대(우리 동네 대학생 커뮤니티)</title>
         <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
         <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' rel='stylesheet'>
-        <link rel="stylesheet" href="css/poststyle.css">
+
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
         <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
@@ -30,12 +31,22 @@
                 background-color: #a4c68a;
             }
 
+            .categoryname {
+                padding-bottom: 20px;
+            }
+
+            .category {
+                display : flex;
+            }
+
+
             .title {
                 text-align: center;
                 font-size : 100px;
                 font-family: "Dongle", sans-serif;
                 font-weight: 700;
                 font-style: normal;
+                cursor: pointer;
             }
 
             .sub-title {
@@ -43,11 +54,13 @@
                 text-align: center;
             }
 
+
             .contain {
                 display : flex;
                 align-items: center;
                 justify-content : center
             }
+
 
             .container {
                 background-color: white;
@@ -59,36 +72,73 @@
             }
 
 
-
-            input::placeholder {
-                text-align: center;
+            .card {
+                position: relative;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                min-width: 0;
+                word-wrap: break-word;
+                background-color: #fff;
+                background-clip: border-box;
+                border: 0px solid transparent;
+                border-radius: 0px;
             }
 
-            textarea::placeholder {
-                text-align: center;
+            .card-body {
+                -webkit-box-flex: 1;
+                -ms-flex: 1 1 auto;
+                flex: 1 1 auto;
+                padding: 1.25rem;
             }
 
-            .btn {
-                background-color: #a4c68a;
-                margin-top: 30px;
-                padding: 10px 0;
-                color : white;
-                border-radius: 8px;
+            .card .card-title {
+                position: relative;
+                font-weight: 600;
+                margin-bottom: 10px;
             }
 
+            ul.list-style-none li {
+                list-style: none;
+            }
 
+            ul.list-style-none li a {
+                color: black;
+                padding: 8px 0px;
+                display: block;
+                text-decoration: none;
+            }
 
+            .m-t-5 {
+                margin-top: 5px;
+            }
 
+            .w-30px {
+                width: 30px;
+            }
+
+            .page-item .page-link {
+                color : black;
+            }
+
+            .page-item.active .page-link {
+                background-color:#a4c68a;
+                border : gray
+            }
         </style>
     </head>
     <body oncontextmenu='return false' class='snippet-body'>
     <div class = "contain">
         <div class="container">
-            <div class = title>울동대</div>
+            <div class = "title" th:onclick="'window.location.href=\'' + @{/boards} + '\''">울동대</div>
             <div class="sub-title">우리 동네 대학생들을 위한 커뮤니티</div>
             <div class="justify-content-center mt-100 mb-100">
                 <div class="nav">
-                    <div><span>category name</span></div>
+                    <div><span></span></div>
                     <div class="dropdown ml-auto mr-3">
                         <button class="btn" data-bs-toggle="dropdown" aria-expanded="false">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
@@ -104,15 +154,16 @@
                 <div class="card">
                     <ul class="list-style-none">
                         <li class="d-flex no-block card-body">
-                            <!--img 크기 70x70-->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-0-square" viewBox="0 0 16 16">
+                            <!--img 크기 100x70-->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-0-square" viewBox="0 0 16 16">
                                 <path d="M7.988 12.158c-1.851 0-2.941-1.57-2.941-3.99V7.84c0-2.408 1.101-3.996 2.965-3.996 1.857 0 2.935 1.57 2.935 3.996v.328c0 2.408-1.101 3.99-2.959 3.99M8 4.951c-1.008 0-1.629 1.09-1.629 2.895v.31c0 1.81.627 2.895 1.629 2.895s1.623-1.09 1.623-2.895v-.31c0-1.8-.621-2.895-1.623-2.895"/>
                                 <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
                             </svg>
                             <div class="ml-3 mt-1">
                                <h3 class="card-title" th:text="${post2.getTitle()}">제목</h3>
-                               <p class="text-muted" th:text="'user'+${post2.getId()}">userid</p>
-                               <p class="text-muted" th:text="${#temporals.format(post2.getCreated_at(), 'yyyy-MM-dd HH:mm:ss')}">createdtime</p>
+                               <b class="text-muted " style="margin-bottom: 0;" th:text="'user'+${post2.getId()}">userid</b>
+                               <b class="text-muted" style="margin-bottom: 0;" th:text="${#temporals.format(post2.getCreated_at(), 'yyyy-MM-dd HH:mm:ss')}">createdtime</b>
+                                <p class="text-muted" style="margin-bottom: 0;" th:text="${#temporals.format(post2.getModified_at(), 'yyyy-MM-dd HH:mm:ss')} + '에 최종 수정됨'">modifiedtime</p>
                             </div>
                             <div class="ml-auto">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="black" class="bi bi-heart" viewBox="0 0 16 16">
@@ -142,11 +193,19 @@
                                 </button>
                             </div>
                         </li>
+                        <!--댓글 내용부분-->
                         <li class="d-flex no-block card-body border-top">
-                            <div>
-                                <p class="card-text">댓글이 없습니다.</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-0-square" viewBox="0 0 16 16">
+                                <path d="M7.988 12.158c-1.851 0-2.941-1.57-2.941-3.99V7.84c0-2.408 1.101-3.996 2.965-3.996 1.857 0 2.935 1.57 2.935 3.996v.328c0 2.408-1.101 3.99-2.959 3.99M8 4.951c-1.008 0-1.629 1.09-1.629 2.895v.31c0 1.81.627 2.895 1.629 2.895s1.623-1.09 1.623-2.895v-.31c0-1.8-.621-2.895-1.623-2.895"/>
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+                            </svg>
+                            <div class="ml-3">
+                                <b class="text-muted " style="margin-bottom: 0;">userid</b>
+                                <b class="text-muted" style="margin-bottom: 0; font-weight: normal; font-size: 12px">createdtime</b>
+                                <p class="text-muted">내용입니다</p>
                             </div>
                         </li>
+                        <!--댓글 작성부분-->
                         <li>
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="댓글" aria-label="Recipient's username" aria-describedby="button-addon2">

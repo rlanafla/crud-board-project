@@ -37,6 +37,7 @@
                 font-family: "Dongle", sans-serif;
                 font-weight: 700;
                 font-style: normal;
+                cursor: pointer;
             }
 
             .sub-title {
@@ -82,7 +83,7 @@
     <body oncontextmenu='return false' class='snippet-body'>
     <div class = "contain">
         <div class="container">
-            <div class="title">울동대</div>
+            <div class = "title" th:onclick="'window.location.href=\'' + @{/boards} + '\''">울동대</div>
             <div class="sub-title">우리 동네 대학생들을 위한 커뮤니티</div>
             <form class="createform" action="/boards/createboard" method="post">
                 <div class="mb-3">

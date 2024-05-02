@@ -34,7 +34,7 @@ public class PostViewController {
     //게시글 목록
     @GetMapping
     public String getAllPostView(@PathVariable("boardid") long boardid, Model model) {
-        List<PostResponseDto> posts = postService.findPosts();
+        List<PostResponseDto> posts = postService.findPosts(boardid);
         model.addAttribute("postlist", posts);
         model.addAttribute("boardid", boardid);
         return "board2"; }
@@ -96,7 +96,7 @@ public class PostViewController {
         PostUpdateDto postUpdateDto = new PostUpdateDto(postid, pw, title, content, location);
         postService.updatePost(postUpdateDto);
         model.addAttribute("boardid", boardid);
-        return "redirect:/boards/{boardid}/posts";
+        return "redirect:/boards/{boardid}/posts/{postid}";
     }
 
     //게시판 삭제

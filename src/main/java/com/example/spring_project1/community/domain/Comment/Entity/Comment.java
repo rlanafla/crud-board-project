@@ -37,13 +37,12 @@ public class Comment extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name="post_id")
-    private Post post;
+    private Post post_id;
 
     @Column(columnDefinition = "Text")
     private String content;
 
     public CommentResponseDto tocommentResponseDto() {
-        Comment comment = new Comment();
-        return new CommentResponseDto(id, pw, content, comment.getCreated_at(), comment.getModified_at());
+        return new CommentResponseDto(id, pw, content, getCreated_at(), getModified_at());
     }
 }

@@ -14,23 +14,29 @@ import org.springframework.stereotype.Service;
 @Service
 public class CommentService {
     private final CommentRepository commentRepository;
+    private final PostService postService;
 
     @Autowired
-    public CommentService(CommentRepository commentRepository) { this.commentRepository = commentRepository; }
+    public CommentService(CommentRepository commentRepository, PostService postService) {
+        this.commentRepository = commentRepository;
+        this.postService = postService;
+    }
 
-    //게시글 조회
-    public List<CommentResponseDto> findComments() { return commentRepository.findAll().stream().map(Comment::tocommentResponseDto).collect(
+    //전체 댓글 조회
+    public List<CommentResponseDto> findComments(long id) {
+        PostResponseDto post = postService.findPost(id);
+        return commentRepository.findAll().stream().map(Comment::tocommentResponseDto).collect(
         Collectors.toList());}
 
-    //id로 게시글 조회
-    public CommentResponseDto findComment(long id) { return commentRepository.findById(id).map(Comment::tocommentResponseDto).orElseThrow(() -> new EntityNotFoundException()); }
+    //
+//    public CommentResponseDto findComment(long id) { return commentRepository.findById(id).map(Comment::tocommentResponseDto).orElseThrow(() -> new EntityNotFoundException()); }
 
-    //게시글 생성
+    //댓글 생성
     public CommentResponseDto createComment(Comment comment) { return commentRepository.save(comment).tocommentResponseDto(); }
 
-    //게시글 수정
+    //댓글 수정
     public CommentResponseDto updateComment(Comment comment) { return commentRepository.save(comment).tocommentResponseDto(); }
 
-    //게시글 삭제
+    //댓글 삭제
     public void deleteComment(long id) { commentRepository.deleteById(id); }
 }

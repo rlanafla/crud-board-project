@@ -14,6 +14,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
 public class PostService {
@@ -29,8 +30,9 @@ public class PostService {
     }
 
     //게시글 조회
-    public List<PostResponseDto> findPosts() {
-        List<Post> post2 = postRepository.findAll();
+    public List<PostResponseDto> findPosts(long id) {
+        Board board = boardService.findBoard(id).toEntity();
+        List<Post> post2 = postRepository.findAllByBoardId(id);
         return post2.stream().map(Post::toPostResponseDto).collect(Collectors.toList());
     }
 

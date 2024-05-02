@@ -36,6 +36,7 @@
       font-family: "Dongle", sans-serif;
       font-weight: 700;
       font-style: normal;
+      cursor: pointer;
     }
 
     .sub-title {
@@ -76,7 +77,7 @@
 <div class = "contain">
   <div class="container">
     <div class="title">울동대</div>
-    <div class="sub-title">우리 동네 대학생들을 위한 커뮤니티</div>
+    <div class = "title" th:onclick="'window.location.href=\'' + @{/boards} + '\''">울동대</div>
     <form class="createform" th:action="@{/boards/{boardid}/posts/edit/{postid}(boardid=${boardid}, postid=${post.getId()})}" method="post">
       <div class="mb-3">
         <input type="text" class="form-control" id="inputtitle" th:value="${post.getTitle()}" name="title" rows="2" placeholder="제목">

@@ -89,6 +89,7 @@
                 border-radius: 0px;
             }
 
+
             .card-body {
                 -webkit-box-flex: 1;
                 -ms-flex: 1 1 auto;
@@ -199,36 +200,51 @@
                         <li class="d-flex no-block card-body border-top">
                             <div class="flex-grow-1">
                                 <div th:each="comment : ${commentlist}">
-                                    <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex justify-content-between align-items-center" id="changediv1">
                                         <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-0-square" viewBox="0 0 16 16">
-                                                <path d="M7.988 12.158c-1.851 0-2.941-1.57-2.941-3.99V7.84c0-2.408 1.101-3.996 2.965-3.996 1.857 0 2.935 1.57 2.935 3.996v.328c0 2.408-1.101 3.99-2.959 3.99M8 4.951c-1.008 0-1.629 1.09-1.629 2.895v.31c0 1.81.627 2.895 1.629 2.895s1.623-1.09 1.623-2.895v-.31c0-1.8-.621-2.895-1.623-2.895"/>
-                                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
-                                            </svg>
-                                            <div class="ml-3 float-right">
-                                                <b class="text-muted" style="margin-bottom: 0;" th:text="${comment.getId()}">userid</b>
-                                                <b class="text-muted" style="margin-bottom: 0; font-weight: normal; font-size: 12px;" th:text="${comment.getCreated_at()}">createdtime</b>
-                                                <p class="text-muted" th:text="${comment.getContent()}"}>내용입니다</p>
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-0-square" viewBox="0 0 16 16">
+                                                    <path d="M7.988 12.158c-1.851 0-2.941-1.57-2.941-3.99V7.84c0-2.408 1.101-3.996 2.965-3.996 1.857 0 2.935 1.57 2.935 3.996v.328c0 2.408-1.101 3.99-2.959 3.99M8 4.951c-1.008 0-1.629 1.09-1.629 2.895v.31c0 1.81.627 2.895 1.629 2.895s1.623-1.09 1.623-2.895v-.31c0-1.8-.621-2.895-1.623-2.895"/>
+                                                    <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+                                                </svg>
+                                                <div class="ml-3 float-right changeclass">
+                                                    <!--수정 버튼 누르면 이 부분이 숨겨짐 폼으로 변하고 이전 입력 내용이 들어가 있어야 함. 제출 버튼을 누르면 이 부분이 돌아옴-->
+                                                    <b class="text-muted" style="margin-bottom: 0;" th:text="'user'+${comment.getId()}">userid</b>
+                                                    <b class="text-muted" style="margin-bottom: 0; font-weight: normal; font-size: 12px;" th:text="${#temporals.format(comment.getCreated_at(), 'yyyy-MM-dd HH:mm:ss')}">createdtime</b>
+                                                    <p class="text-muted" th:text="${comment.getContent()}"}>내용입니다</p>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="dropdown">
-                                            <button class="btn" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                                </svg>
-                                            </button>
-                                            <ul class="dropdown-menu" aria-labelledby="moredropdown">
-                                                <li><a class="dropdown-item">수정</a></li>
-                                                <li><a class="dropdown-item">삭제</a></li>
-                                            </ul>
+                                        <div class="float-right">
+                                            <div class="dropdown float-right">
+                                                <button class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                                                        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+                                                    </svg>
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="moredropdown">
+                                                    <li><a class="dropdown-item" id="editbtn" onclick="toggleDiv()">수정</a></li>
+                                                    <!--수정 누르면 폼이 바뀌도록 자바스크립트 구현. href는 수정후 완료를 누를 때 controlelr에 제출하도록 하자-->
+                                                    <li><a class="dropdown-item" th:href="@{/boards/{boardid}/posts/{postid}/delete/{commentid}(boardid=${boardid}, postid=${postid}, commentid=${comment.getId()})}">삭제</a></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
+                                    <form class="changeclass" id="changediv2" style="display:none;" th:action="@{/boards/{boardid}/posts/{postid}/edit/{commentid}(boardid=${boardid}, postid=${postid}, commentid=${comment.getId()})}" method="post">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control col-2" placeholder="비밀번호" name="pw" aria-label="username" aria-describedby="button-addon2" th:value="${comment.getPw()}">
+                                            <input type="text" class="form-control" placeholder="댓글을 입력하세요" name="content" aria-label="username" aria-describedby="button-addon2" th:value="${comment.getContent()}">
+                                            <button class="btn btn-secondary col-1" type="submit" style="background-color: #a4c68a; border: none;" onclick="toggleDiv()">수정</button>
+                                        </div>
+                                    </form>
+
+
                                 </div>
                             </div>
                         </li>
                         <!--댓글 작성부분-->
                         <li>
-                            <form class="createcommentform" th:action="@{/boards/{boardid}/posts/{postid}/createcomment(boardid=${boardid}, postid=${postid})}">
+                            <form id="createcommentform" th:action="@{/boards/{boardid}/posts/{postid}/createcomment(boardid=${boardid}, postid=${postid})}" method="post">
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control col-2" placeholder="비밀번호" name="pw" aria-label="username" aria-describedby="button-addon2">
                                     <input type="text" class="form-control" placeholder="댓글을 입력하세요" name="content" aria-label="username" aria-describedby="button-addon2">
@@ -241,6 +257,28 @@
             </div>
         </div>
     </div>
-<script type='text/javascript'></script>
+    <script>
+        var div1Elements = document.querySelectorAll('#changediv1 div');
+        var div2 = document.getElementById("changediv2");
+        var currentDiv = div1Elements; // Initially set to div1
+
+        function toggleDiv() {
+            if (currentDiv === div1Elements) {
+                div1Elements.forEach(function(element) {
+                    element.style.display = "none";
+                });
+                div2.style.display = "flex";
+                currentDiv = div2;
+            } else {
+                div1Elements.forEach(function(element) {
+                    element.style.display = "flex";
+                });
+                div2.style.display = "none";
+                currentDiv = div1Elements;
+            }
+        }
+
+    </script>
 </body>
+
 </html>

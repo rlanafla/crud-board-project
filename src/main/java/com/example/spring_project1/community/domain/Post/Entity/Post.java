@@ -31,7 +31,6 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Table(name = "post")
 public class Post extends BaseEntity {
     @Id
@@ -48,7 +47,7 @@ public class Post extends BaseEntity {
     @JoinColumn(name="board_id")
     private Board board_id;
 
-    @Column(length = 20, nullable = false)
+    @Column(length = 50, nullable = false)
     private String title;
 
     @Column(columnDefinition = "Text")

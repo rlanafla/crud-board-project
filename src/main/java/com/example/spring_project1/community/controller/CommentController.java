@@ -39,12 +39,12 @@ public class CommentController {
         return ResponseEntity.ok(comment);
     }
 
+
     //댓글 생성
     @PostMapping("/createcomment")
-    public String createComment(@PathVariable("postid") long postid, @RequestParam("pw") String pw, @RequestParam("content") String content, Model model) {
+    public String createComment(@PathVariable("boardid") long boardid, @PathVariable("postid") long postid, @RequestParam("pw") String pw, @RequestParam("content") String content, Model model) {
         CommentRequestDto commentRequestDto = new CommentRequestDto(pw, content);
         commentService.createComment(postid, commentRequestDto);
-        model.addAttribute("postid", postid);
         return "redirect:/boards/{boardid}/posts/{postid}";
     }
 
@@ -67,6 +67,12 @@ public class CommentController {
         @RequestParam("pw") String pw, @RequestParam String content, Model model){
         CommentUpdateDto commentUpdateDto = new CommentUpdateDto(commentid, pw, content);
         commentService.updateComment(commentUpdateDto);
+        return "redirect:/boards/{boardid}/posts/{postid}";
+    }
+
+    @GetMapping("/delete/{commentid}")
+    public String deleteComment(@PathVariable("commentid") long commentid){
+        commentService.deleteComment(commentid);
         return "redirect:/boards/{boardid}/posts/{postid}";
     }
 }

@@ -3,7 +3,7 @@
 <head>
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
-  <title>게시글 수정</title>
+  <title>울동대(우리 동네 대학생 커뮤니티)</title>
   <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
   <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' rel='stylesheet'>
   <link rel="stylesheet" href="css/boardcreatestyle.css">
@@ -76,7 +76,6 @@
 <body oncontextmenu='return false' class='snippet-body'>
 <div class = "contain">
   <div class="container">
-    <div class="title">울동대</div>
     <div class = "title" th:onclick="'window.location.href=\'' + @{/boards} + '\''">울동대</div>
     <form class="createform" th:action="@{/boards/{boardid}/posts/edit/{postid}(boardid=${boardid}, postid=${post.getId()})}" method="post">
       <div class="mb-3">
@@ -89,7 +88,7 @@
         <input class="form-control" type="file" id="inputfile">
       </div>
       <div class="mb-3">
-        <input type="text" class="form-control" id="inputpw" th:value="${post.getPw()}" name="pw" rows="1" placeholder="비밀번호">
+        <input type="password" class="form-control" id="inputpw" th:value="${post.getPw()}" name="pw" rows="1" placeholder="비밀번호">
       </div>
       <div class="mb-3">
         <input type="text" class="form-control" id="inputlocation" th:value="${post.getLocation()}" name="location" rows="1" placeholder="동네 설정">
